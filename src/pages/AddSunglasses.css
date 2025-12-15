@@ -1,0 +1,130 @@
+.form-container {
+  padding: 3rem;
+  max-width: 700px;
+  margin: 0 auto;
+  min-height: calc(100vh - 100px);
+}
+
+.sunglasses-form {
+  background: rgba(42, 42, 42, 0.95);
+  padding: 3rem;
+  border-radius: 2px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border: 1px solid #D4AF37;
+}
+
+.sunglasses-form h2 {
+  margin-top: 0;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-align: center;
+  background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.8rem;
+  font-weight: 300;
+  color: #D4AF37;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.form-control {
+  padding: 1rem;
+  border: 1px solid #D4AF37;
+  border-radius: 2px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: rgba(26, 26, 26, 0.8);
+  color: #F8F8F8;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.form-control::placeholder {
+  color: #666;
+  letter-spacing: 1px;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #FFD700;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  background: rgba(26, 26, 26, 0.95);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+select.form-control {
+  cursor: pointer;
+}
+
+select.form-control option {
+  background: #2a2a2a;
+  color: #F8F8F8;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.button-primary,
+.button-secondary {
+  flex: 1;
+  padding: 1rem;
+  border: 1px solid #D4AF37;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, #8B0000 0%, #a00000 100%);
+  color: #F8F8F8;
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+}
+
+.button-primary:hover {
+  background: linear-gradient(135deg, #a00000 0%, #8B0000 100%);
+  box-shadow: 0 6px 20px rgba(139, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.button-secondary {
+  background: rgba(26, 26, 26, 0.8);
+  color: #C0C0C0;
+  border-color: #666;
+}
+
+.button-secondary:hover {
+  background: rgba(42, 42, 42, 0.95);
+  border-color: #888;
+  color: #F8F8F8;
+  transform: translateY(-2px);
+}
