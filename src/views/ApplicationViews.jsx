@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import { NavBar } from "../components/nav/NavBar";
-import { CollectionGrid } from "../pages/CollectionGrid";
 import { AddSunglasses } from "../pages/AddSunglasses";
 import { EditSunglasses } from "../pages/EditSunglasses";
 import { DetailView } from "../pages/DetailView";
+import { CollectionGrid } from "../Pages/CollectionGrid";
 
 export const ApplicationViews = () => {
   return (
