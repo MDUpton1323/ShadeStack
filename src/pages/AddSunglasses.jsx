@@ -120,7 +120,7 @@ export const AddSunglasses = () => {
         </fieldset>
 
         <div className="form-actions">
-          <button type="submit" className="button-=primary">
+          <button type="submit" className="button-primary">
             Save Sunglasses
           </button>
           <button

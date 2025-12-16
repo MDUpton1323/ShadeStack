@@ -11,9 +11,9 @@ export const getSunglassesByUserId = (userId) => {
 };
 
 export const getSunglassesById = (id) => {
-  return fetch(
-    `http://localhost:8088/sunglasses?userId=${id}&_expand=styles`
-  ).then((res) => res.json());
+  return fetch(`http://localhost:8088/sunglasses/${id}?_expand=styles`).then(
+    (res) => res.json()
+  );
 };
 
 export const createSunglasses = (sunglasses) => {
