@@ -31,6 +31,7 @@ export const Register = () => {
       }
     });
   };
+
   return (
     <main className="auth-container">
       <section>
