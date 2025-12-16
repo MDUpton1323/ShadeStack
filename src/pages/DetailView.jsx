@@ -10,7 +10,6 @@ export const DetailView = () => {
   const [sunglasses, setSunglasses] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
-  const currentUser = JSON.parse(localStorage.getItem("shade_user"));
 
   useEffect(() => {
     getSunglassesById(id).then((sunglassesData) => {

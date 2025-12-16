@@ -1,3 +1,4 @@
+import { FilterBar } from "../components/filter/FilterBar";
 import { getAllStyles } from "../services/stylesService";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,38 +11,20 @@ import "./CollectionGrid.css";
 export const CollectionGrid = () => {
   const [sunglasses, setSunglasses] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredSunglasses, setFilteredSunglasses] = useState([]);
   const [allStyles, setAllStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState("");
   const navigate = useNavigate();
 
   const currentUser = JSON.parse(localStorage.getItem("shade_user"));
 
+  // Fetch sunglasses on mount
   useEffect(() => {
     getSunglassesByUserId(currentUser.id).then((sunglassesArray) => {
       setSunglasses(sunglassesArray);
-      setFilteredSunglasses(sunglassesArray);
     });
   }, [currentUser.id]);
 
-  useEffect(() => {
-    let filtered = sunglasses;
-
-    if (searchTerm) {
-      filtered = filtered.filter(
-        (shade) =>
-          shade.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          shade.brand?.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-
-    if (selectedStyle) {
-      filtered = filtered.filter((shade) => shade.stylesId === selectedStyle);
-    }
-
-    setFilteredSunglasses(filtered);
-  }, [searchTerm, selectedStyle, sunglasses]);
-
+  // Fetch styles on mount
   useEffect(() => {
     getAllStyles().then((stylesArray) => {
       setAllStyles(stylesArray);
@@ -60,6 +43,27 @@ export const CollectionGrid = () => {
     }
   };
 
+  // CALCULATE filtered sunglasses directly - no state needed!
+  const getFilteredSunglasses = () => {
+    let filtered = sunglasses;
+
+    if (searchTerm) {
+      filtered = filtered.filter(
+        (shade) =>
+          shade.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          shade.brand?.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (selectedStyle) {
+      filtered = filtered.filter((shade) => shade.stylesId === selectedStyle);
+    }
+
+    return filtered;
+  };
+
+  const filteredSunglasses = getFilteredSunglasses();
+
   return (
     <div className="collection-container">
       <div className="collection-header">
@@ -72,28 +76,13 @@ export const CollectionGrid = () => {
         </button>
       </div>
 
-      <div className="filter-bar">
-        <input
-          type="text"
-          placeholder="Search by name or brand..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
-        />
-
-        <select
-          className="style-filter"
-          value={selectedStyle}
-          onChange={(e) => setSelectedStyle(e.target.value)}
-        >
-          <option value="">All Styles</option>
-          {allStyles.map((style) => (
-            <option key={style.id} value={style.id}>
-              {style.name}
-            </option>
-          ))}
-        </select>
-      </div>
+      <FilterBar
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        selectedStyle={selectedStyle}
+        setSelectedStyle={setSelectedStyle}
+        allStyles={allStyles}
+      />
 
       <div className="sunglasses-grid">
         {filteredSunglasses.map((shade) => (
