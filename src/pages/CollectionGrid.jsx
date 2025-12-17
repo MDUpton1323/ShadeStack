@@ -17,14 +17,12 @@ export const CollectionGrid = () => {
 
   const currentUser = JSON.parse(localStorage.getItem("shade_user"));
 
-  // Fetch sunglasses on mount
   useEffect(() => {
     getSunglassesByUserId(currentUser.id).then((sunglassesArray) => {
       setSunglasses(sunglassesArray);
     });
   }, [currentUser.id]);
 
-  // Fetch styles on mount
   useEffect(() => {
     getAllStyles().then((stylesArray) => {
       setAllStyles(stylesArray);
@@ -43,7 +41,6 @@ export const CollectionGrid = () => {
     }
   };
 
-  // CALCULATE filtered sunglasses directly - no state needed!
   const getFilteredSunglasses = () => {
     let filtered = sunglasses;
 
